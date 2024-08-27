@@ -44,28 +44,40 @@ pip install torch scikit-learn pandas joblib
 
 ## How to Run
 
-### 1. Data Exploration
-
-Before training the model, you can explore the dataset using the Jupyter notebook provided:
-
-```bash
-jupyter notebook notebook/Used_Car_Price_Estimation.ipynb
-```
-
-### 2. Training the Model
-To train the model, run the train.py script:
+### 1. Running Web Sever
+Before making a prediction, you'll need to start the web server by running the `app.py` script:
 
 ```bash
-python src/train.py
+jupyter notebook notebook/app.ipynb
 ```
 
 This script will:
 
-- Load the data from data/car.csv.
-- Encode categorical variables and normalize the features using MinMaxScaler.
-- Train a neural network model using PyTorch.
-- Save the trained model and scalers in the models/ directory.
+- Load the saved model, scalers, and encoders from the models/ directory.
+- Start the server, allowing users to input data via the web interface.
+- Preprocess the input data to ensure it matches the format of the training data.
+- Output the predicted price based on the car features provided.
 
+### 2. Making Predictions
+
+To predict the price, use the following command:
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{
+  "Brand": ["Toyota"],
+  "Model": ["Camry"],
+  "Year": [2000],
+  "Status": ["Used"],
+  "Mileage": [20000.0]
+}' http://localhost:port/predict
+
+```
+
+This command will:
+
+- Require input data formatted similarly to the training data.
+- Send the data to the server for price prediction.
+- Output the predicted price based on the provided car features.
 
 ### 3. Model Architecture
 The model is a simple feedforward neural network with the following layers:
@@ -74,12 +86,13 @@ Input Layer: Matches the number of features after preprocessing (5 in this proje
 Hidden Layers: Two hidden layers with ReLU activation.
 Output Layer: A single neuron with ReLU to predict the price.
 
-### 4. Saving and Loading the Model
+### 4. Loading the Model
 - **Model:** The trained model's state dictionary is saved as car_price_model.pth in the models/ directory.
 - **Scalers:** The MinMaxScaler objects used to normalize features (scaler_X.pkl) and the target variable (scaler_y.pkl) are also saved in the models/ directory.
 - **Encoder:** The Encoder for model (Model_encoder.pkl), brand (Brand_encoder.pkl), and status (Status_encoder.pkl) are all saved in the models/ directory.
 
 To load the model scalers, and encoder:
+
 ```bash
 import torch
 import joblib
@@ -97,20 +110,6 @@ Brand_encoder = joblib.load(Brand_encoder.pkl)
 Model_encoder = joblib.load(Model_encoder.pkl)
 Status_encoder = joblib.load(Status_encoder.pkl)
 ```
-
-### 5. Making Predictions
-To make predictions using the trained model, run the predict.py script:
-
-```bash
-python src/predict.py
-```
-
-This script will:
-
-- Load the saved model and scalers from the models/ directory.
-- Preprocess the input data in the same way as the training data.
-- Output the predicted price for the given car features.
-
 
 
 ## Next Steps
