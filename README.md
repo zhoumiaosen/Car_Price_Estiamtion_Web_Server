@@ -5,7 +5,6 @@ This project aims to deploy a used car price prediction model on a web platform,
 ```plaintext
 car_price_prediction/
 │
-│
 ├── models/
 │   ├── car_price_model.pth         	  # Saved model state dictionary
 │   ├── scaler_X.pkl                	  # Saved X scaler (MinMaxScaler for features)
@@ -16,12 +15,7 @@ car_price_prediction/
 │
 ├── src/
 │   ├── app.py                            # web server
-│   ├── train.py                          # Script for training the model
-│   ├── predict.py                        # Script for making predictions
 │   └── model.py                          # Model definition (PyTorch neural network)
-│
-├── notebooks/
-│   └── Used_Car_Price_Estimation.ipynb   # Jupyter notebook for data exploration and preprocessing
 │
 └── README.md                             # Project overview and instructions
 ```
