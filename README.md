@@ -26,8 +26,7 @@ car_price_prediction/
 - PyTorch
 - scikit-learn
 - pandas
-- joblib (optional, for saving and loading scalers)
-- Jupyter Notebook (optional, for data exploration)
+- joblib (for loading scalers and encoders)
 
 You can install the necessary packages using the following command:
 
