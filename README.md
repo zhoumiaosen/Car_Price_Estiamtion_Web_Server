@@ -1,12 +1,10 @@
 ## Overview
-This project is on a mission to launch a used car price prediction model onto a website, so you can instantly find out if that "vintage classic" you’re eyeing is a steal or a rip-off—because everyone deserves to know if they’re getting a deal or just another rusty disappointment!
+This project aims to deploy a used car price prediction model on a web platform, allowing users to instantly determine the estimated price of a used car. The AI model is built upon the resources and code available in this repository: [Car_Price_Estimation](https://github.com/zhoumiaosen/Car_Price_Estiamtion).
 
 ## Project Structure
 ```plaintext
 car_price_prediction/
 │
-├── data/
-│   └── cars.csv                     	  # Original dataset
 │
 ├── models/
 │   ├── car_price_model.pth         	  # Saved model state dictionary
@@ -17,6 +15,7 @@ car_price_prediction/
 │   └── Status.pkl              	  # Saved encoder (encoder for car status)
 │
 ├── src/
+│   ├── app.py                            # web server
 │   ├── train.py                          # Script for training the model
 │   ├── predict.py                        # Script for making predictions
 │   └── model.py                          # Model definition (PyTorch neural network)
