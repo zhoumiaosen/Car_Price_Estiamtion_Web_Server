@@ -5,8 +5,6 @@ This project aims to deploy a used car price prediction model on a web platform,
 ```plaintext
 car_price_prediction/
 │
-├── data/
-│   └── cars.csv                     	  # Original dataset
 │
 ├── models/
 │   ├── car_price_model.pth         	  # Saved model state dictionary
@@ -17,6 +15,7 @@ car_price_prediction/
 │   └── Status.pkl              	  # Saved encoder (encoder for car status)
 │
 ├── src/
+│   ├── app.py                            # web server
 │   ├── train.py                          # Script for training the model
 │   ├── predict.py                        # Script for making predictions
 │   └── model.py                          # Model definition (PyTorch neural network)
